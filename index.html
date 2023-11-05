@@ -1,0 +1,708 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>j-pop弾き語り懶人包</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+    margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-interactiveBlue { background-color: rgba(35, 131, 226, .07); }
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-translucentGray { background-color: rgba(255, 255, 255, 0.0375); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+.select-value-color-pageGlass { background-color: undefined; }
+.select-value-color-washGlass { background-color: undefined; }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="d190c287-2d36-4037-aba4-1d3710408d6a" class="page serif"><header><h1 class="page-title">j-pop弾き語り<strong><strong>懶人包</strong></strong></h1><p class="page-description"></p></header><div class="page-body"><h1 id="3db5e5a9-5a0b-42a2-8041-bc85d3d93e04" class="">目錄</h1><nav id="898cc97a-06ab-4e95-9f17-bbf9e32fe58f" class="block-color-gray table_of_contents"><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#3db5e5a9-5a0b-42a2-8041-bc85d3d93e04">目錄</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#aadfd8d5-0d51-44f6-a402-abbbeb6777e8">Why?</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#5495f358-db77-4b1e-81d9-554e4ac3d8e4">概念roadmap</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#8574cd4d-fd1f-46a8-ac53-fd6b6b23916f">實操流程</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#4a21cc77-98b0-43a6-9556-8fbfef7f855e">實例All night radio - Ado</a></div></nav><h2 id="aadfd8d5-0d51-44f6-a402-abbbeb6777e8" class="">Why?</h2><p id="3de2c3fd-06aa-4d1c-97b8-4d660941afb0" class="">
+</p><ol type="1" id="466769c7-25a2-4b76-bab3-c6256855cc57" class="numbered-list" start="1"><li>太碎片化，除非你有很多時間整理</li></ol><ol type="1" id="0fe9e35c-308b-404e-a46b-198d74969852" class="numbered-list" start="2"><li>ufret上新歌的譜要等一段時間</li></ol><ol type="1" id="983b9141-addd-44cf-97e2-69e822945504" class="numbered-list" start="3"><li>ufret上有沒有你要的歌看緣分</li></ol><ol type="1" id="3d297128-f841-44f9-b539-4c4e9900f38f" class="numbered-list" start="4"><li>ufret上譜子有些聽起來很怪</li></ol><ol type="1" id="440307e4-253c-4aa4-843e-941ad1f5a4fb" class="numbered-list" start="5"><li>升降key要$</li></ol><ol type="1" id="45be6f14-1b7a-47ce-aac9-cee3e45930a1" class="numbered-list" start="6"><li>樂理很複雜很難不想看</li></ol><p id="70a265cc-201c-46b1-9f98-85fb9d939e81" class="">
+</p><p id="26704e0c-53ed-411e-be07-eca08f4f9285" class="">
+</p><h2 id="5495f358-db77-4b1e-81d9-554e4ac3d8e4" class="">概念roadmap</h2><p id="8b3173ab-c3ef-4d78-b979-b341e5baf1d1" class="">弾き語り的組成就是:<div class="indented"><h3 id="8d9a861f-00d3-4cc9-b377-37f1435d7f6b" class=""><strong>🎶抓譜</strong></h3><ol type="1" id="46804bd1-c702-4b6b-bd2f-6b1b4b69f886" class="numbered-list" start="1"><li>理解歌曲組成有3部分<ol type="a" id="698bd9e3-72bb-4f4d-b33d-735047ad0fa0" class="numbered-list" start="1"><li>節奏rhythm，和聲harmony，旋律melody</li></ol></li></ol><ol type="1" id="565dae66-53e4-4b85-b00c-ab7ce91d8281" class="numbered-list" start="2"><li>設置好寫下/記錄下抓譜子的工具怎麽用</li></ol><ol type="1" id="987edb48-40d6-4d46-86a7-0e5dc2b35a62" class="numbered-list" start="3"><li>理解key跟degree（i ii iii iv v vi)還有和弦進行是什麽概念</li></ol><ol type="1" id="5e625de9-01fe-4402-9aeb-4093ccafac33" class="numbered-list" start="4"><li>理解和弦跟吉他inversion<ol type="a" id="750aff0d-bf1c-41b7-9b3c-8ec6921bd9a1" class="numbered-list" start="1"><li>吉他C大調六根弦可以C-E-G，也可以E-C-G，C-G-E</li></ol></li></ol><h3 id="bccbf9fe-ea7f-4424-909a-6ac2460dc19c" class=""><strong>🎤唱歌</strong></h3><ol type="1" id="78b21bd6-c442-4f26-815d-b854e4859d9f" class="numbered-list" start="1"><li>記日語歌詞發音</li></ol><ol type="1" id="755667fb-1605-4129-8da6-ef392684ce9e" class="numbered-list" start="2"><li>子母音發聲<ol type="a" id="d51997e2-34d3-4287-8fdd-8357b98c2883" class="numbered-list" start="1"><li>aeiou</li></ol></li></ol><ol type="1" id="a4a0801d-07a4-46b6-aae6-1957bcfc023b" class="numbered-list" start="3"><li>氣流控制<ol type="a" id="1dff27fd-0609-454e-a0df-e881c4ebd597" class="numbered-list" start="1"><li>很容易邊彈邊唱到沒氣</li></ol></li></ol><h3 id="4874abd3-a5db-4f50-8bc4-55abc090d0b2" class=""><strong>🎸吉他</strong></h3><ol type="1" id="e45bf6b8-f2d6-4d9a-9626-1b3cc6840709" class="numbered-list" start="1"><li>左手和弦<ol type="a" id="522d9307-1ca5-435c-9026-4a3351438ad8" class="numbered-list" start="1"><li>理解吉他指板的原理</li></ol><ol type="a" id="5f2d4b26-bb95-408e-8d24-c7922e7cc5af" class="numbered-list" start="2"><li>理解吉他同一個名字的和弦有很多種按法，稱inversion </li></ol><ol type="a" id="5f80cd1a-f90a-4e2c-b215-f1440ec136d9" class="numbered-list" start="3"><li>開放和弦（好摁）/封閉和弦（難摁）執行可能與否 &gt; capo</li></ol></li></ol><ol type="1" id="db4b38f7-e25e-41bf-8b29-8a10b532887d" class="numbered-list" start="2"><li>右手掃弦/撥弦節奏<ol type="a" id="96f75d5e-fada-4a4e-9b19-66425a991c6f" class="numbered-list" start="1"><li></li></ol><ol type="a" id="3887f1cd-94da-4db5-b95e-82ef5ea75b46" class="numbered-list" start="2"><li>不斷練習到跟唱歌獨立</li></ol><ol type="a" id="b4baff6f-5018-4dfd-8441-590c08c98d45" class="numbered-list" start="3"><li>4分8分16分音符概念</li></ol></li></ol><ol type="1" id="487d1499-9585-4e3b-850b-7a089afb3738" class="numbered-list" start="3"><li>*維持節奏（就連<a href="https://www.youtube.com/watch?v=kzZ6KXDM1RI&amp;pp=ygUKZHJ5IGZsb3dlcg%3D%3D">優里</a>講過這個首當其衝！跑拍對聼感影響很大！）</li></ol><h3 id="a96a0767-09be-4ab6-b1da-05e7c316eaa4" class="">📷<strong>錄製&amp;編輯(Capcut + Impact)</strong></h3><ol type="1" id="25a1fbdb-e0e3-427a-a561-ee72b3b11eea" class="numbered-list" start="1"><li>Impact是自帶混音的錄影軟體，看個人喜好可以參考看看！</li></ol><ol type="1" id="2b8eaa24-08ba-47fb-b07d-3e5b4e4f630f" class="numbered-list" start="2"><li>Capcut影片剪輯大家應該都會用！<ol type="a" id="2ac31d07-8cae-48d3-a69d-c91b7b04a3cc" class="numbered-list" start="1"><li>先找好自己要的字型，大小，字距，放在畫面什麽位置，濾鏡用哪個</li></ol><ol type="a" id="a466bfc6-557d-46dd-bb0b-736d299c9ca7" class="numbered-list" start="2"><li>播放你錄好的影片，然後複製調整好的文字元素到換歌詞的地方</li></ol><ol type="a" id="8c9bc25e-7b31-4c21-b51e-c1e81d4f0bda" class="numbered-list" start="3"><li>然後電腦熒幕分屏把歌詞一個一個複製黏貼就好啦！</li></ol></li></ol></div></p><p id="d709f6b4-c20d-45b2-b96f-031766b18049" class="">
+</p><h2 id="8574cd4d-fd1f-46a8-ac53-fd6b6b23916f" class="">實操流程</h2><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="b339f442-3429-43c9-b195-c10a41009b15"><div style="font-size:1.5em"><span class="icon">1️⃣</span></div><div style="width:100%"><strong>決定你要cover的部分</strong><ol type="1" id="7d3e34f9-90fb-4fad-bc14-3013301309f8" class="numbered-list" start="1"><li>因爲短影音的關係現在大部分弾き語り都是一小段而已，所以意外的輕鬆！</li></ol></div></figure><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="27c51794-761e-4f0f-89e5-bf949b664cee"><div style="font-size:1.5em"><span class="icon">2️⃣</span></div><div style="width:100%"><strong>決定你要彈唱要+/-幾個半音</strong><ol type="1" id="e5514334-2433-4091-ad72-eeff4388a799" class="numbered-list" start="1"><li>找一首歌最高或者最低的地方，根據你的音高範圍調整比原曲+-幾個key</li></ol><ol type="1" id="0c8b58e2-da71-482f-b210-83ff8e8a8ebd" class="numbered-list" start="2"><li>決定好之後在chord ai中調整到你要的pitch</li></ol></div></figure><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="d9676fd6-3fd6-406b-81fe-b424e3c39738"><div style="font-size:1.5em"><span class="icon">3️⃣</span></div><div style="width:100%"><strong>決定capo（注意）</strong><ol type="1" id="24d4d5a8-90d1-4184-ab51-83b7dbfbfca0" class="numbered-list" start="1"><li>在chord ai調整capo數，看數字幾最多</li></ol><ol type="1" id="59f1482e-d60a-4461-83c8-012c32a31a5c" class="numbered-list" start="2"><li><strong><mark class="highlight-red">注意chord ai在更改capo的時候顯示chord block diagram下面標注的音會出錯跟著加一個半音不要參考到錯的。決定好capo之後重新analyze歌曲一遍，調整好pitch，不要動capo，參考這時的根音</mark></strong></li></ol></div></figure><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="ee72e6c3-d6de-40bc-a949-df0d26c9b075"><div style="font-size:1.5em"><span class="icon">4️⃣</span></div><div style="width:100%"><strong>設置好你的寫譜工具</strong><ol type="1" id="987d3795-2de9-40bc-9efa-b1fb76cd0dc6" class="numbered-list" start="1"><li>軟體/紙本什麽都好，總之歌詞要寫下來然後換行，歌曲前奏副歌主歌等等也分開區塊</li></ol><ol type="1" id="50d558f1-fff4-404d-af2f-19884b47d86a" class="numbered-list" start="2"><li>推薦 ：<ol type="a" id="9a170581-67ad-4c28-af94-201018e27b99" class="numbered-list" start="1"><li>&gt; guitar editor <a href="https://github.yanhaixiang.com/guitar-tabs-editor/#/">https://github.yanhaixiang.com/guitar-tabs-editor/#/</a><ol type="i" id="415d25bc-df02-4033-9b35-742e9b4c2a03" class="numbered-list" start="1"><li><mark class="highlight-red"><strong>注意這個guitar editor刷新網頁之後進度會遺失，然後摁右上角的text的開關按鈕有bug會導致進度遺失，之後我會想辦法 </strong></mark></li></ol></li></ol><ol type="a" id="7f93938f-5c53-4aa8-9053-9491cd9e6755" class="numbered-list" start="2"><li>ChordPro<ol type="i" id="8165ab8b-e692-47ec-84bd-834bfa57fb31" class="numbered-list" start="1"><li>這是一個很像markdown，用特定的語法就可以preview成吉他樂譜的格式，跟前面推薦的guitar editor的原理很像。</li></ol></li></ol><p id="88342fa5-c2a3-481f-a921-9f3c315161c9" class="">
+</p></li></ol></div></figure><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="8b3a2167-c36a-4267-86ba-f77ea080484b"><div style="font-size:1.5em"><span class="icon">5️⃣</span></div><div style="width:100%"><strong>打開chord ai寫下和弦，同時標記漏拍&amp;錯誤和弦分秒數</strong><ol type="1" id="7778741a-3cd8-43aa-9602-494035cc5b58" class="numbered-list" start="1"><li><strong><mark class="highlight-red">*注意，寫和弦之前如果動過capo要重新analyze歌曲一遍，然後不要動capo</mark></strong></li></ol><ol type="1" id="cc67a0f6-c5f4-4bfd-a63e-5df351aaba0e" class="numbered-list" start="2"><li>寫下chord ai判別出的正確的和弦</li></ol><ol type="1" id="eb58259a-c1af-4940-bb69-32dc0c852d3d" class="numbered-list" start="3"><li>標記chord ai哪裏<span style="border-bottom:0.05em solid">漏了和弦</span>然後<span style="border-bottom:0.05em solid">標記</span>分秒數(1:21)和記號M(missing)</li></ol><ol type="1" id="68489852-b98e-4e70-8e1e-3ccec7ff26d6" class="numbered-list" start="4"><li>標記chord ai哪裏<span style="border-bottom:0.05em solid">和弦不對</span>然後<span style="border-bottom:0.05em solid">標記</span>分秒數(1.21)和記號X(incorrect)</li></ol></div></figure><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="a087edf5-31c3-4b63-848b-2263262c4972"><div style="font-size:1.5em"><span class="icon">6️⃣</span></div><div style="width:100%"><strong>修正&amp;填補標記處</strong><ol type="1" id="e35af438-951d-48a2-9ec1-4ebd8b9de45e" class="numbered-list" start="1"><li>到標記缺少/錯誤的分秒數然後<span style="border-bottom:0.05em solid">separate mix</span>後聼bass找出根音<ol type="a" id="3b41e669-81ad-4955-b9cc-3a2b486b2e10" class="numbered-list" start="1"><li>*找出原曲的key<ol type="i" id="183d30d0-2c4e-4f3a-9cbb-bac6e3f526d2" class="numbered-list" start="1"><li>可以用排除法得出key的方便的webapp <a href="https://showscale.com/">https://showscale.com</a></li></ol><ol type="i" id="93984720-5a29-408e-9427-f9c9e8e2ecfe" class="numbered-list" start="2"><li>出現了key以外的音，説明可能是有轉調：<ol type="1" id="ecee1784-857b-4555-88dd-dd54b178c128" class="numbered-list" start="1"><li>首先是要劃分好區域，從哪裏開始到結束可能是轉調的區域</li></ol><ol type="1" id="bf70706e-72a0-48d8-8e25-4d7c2fcc0454" class="numbered-list" start="2"><li>決定分析轉調的方針</li></ol><ol type="1" id="76dd5664-697e-49d0-a49e-0b5f5eb56bd8" class="numbered-list" start="3"><li>聼其他聲部增加可用來參考的音</li></ol><ol type="1" id="4a347c2c-f466-4dcb-8818-e11f1f50e90b" class="numbered-list" start="4"><li>理解轉調原理，去找共同和弦很多的另一個key</li></ol><p id="a5fbd643-adc1-427f-928a-fb47049e75ab" class="">
+</p></li></ol></li></ol><ol type="a" id="d3bbdbbf-5cd8-48ea-b491-2d611404fdc1" class="numbered-list" start="2"><li>*對上key中根音對應的和弦<ol type="i" id="bd2706bb-90cc-4514-ae9d-a83ed1a1f92b" class="numbered-list" start="1"><li>可以查詢每個key中的和弦的網站<a href="https://www.piano-keyboard-guide.com/chords-by-key.html">https://www.piano-keyboard-guide.com/chords-by-key.html</a></li></ol><ol type="i" id="d412fcb1-ad35-4760-b418-f420b00081c8" class="numbered-list" start="2"><li>bass連續兩個根音一樣但歌的伴奏聽起來這兩拍是有變化 &gt; 調整根音以外的和弦中的音</li></ol><ol type="i" id="ca9c9917-d5b2-4c4d-acd0-004e72d5bf84" class="numbered-list" start="3"><li>bassline開始大範圍都不遵循一個key内 &gt; 暫時參考拍點上的bass音就好+參考其他聲部的音</li></ol></li></ol></li></ol></div></figure><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="2e71f960-2a53-4245-a7a2-be636db2d7fd"><div style="font-size:1.5em"><span class="icon">7️⃣</span></div><div style="width:100%">把capo調成先前定好的，然後和弦按法截圖下來。把還是太難按的用chord inversion去看有沒有更簡單的（chord ai 的 chord block diagram往左/往右滑）</div></figure><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="c1deaa6f-8ef1-4a5f-bd5b-5d4c678a16ea"><div style="font-size:1.5em"><span class="icon">8️⃣</span></div><div style="width:100%">練習！先背左手，然後再配合節拍器練習右手節奏跟唱歌協調</div></figure><p id="46699982-eefa-4a10-997d-f27e032b08e3" class="">
+</p><p id="049fa007-4e0f-4df6-ab7a-64e3463a7586" class="">
+</p><h2 id="4a21cc77-98b0-43a6-9556-8fbfef7f855e" class="">實例All night radio - Ado</h2><p id="84e14deb-0402-467b-a797-a5612b6601f3" class=""><a href="https://www.youtube.com/watch?v=H2PswzBuvz0">All night radio - Ado</a></p><ol type="1" id="8e2a734f-09da-4b86-a48f-0ed8d7c54e9b" class="numbered-list" start="1"><li><span style="border-bottom:0.05em solid"><strong>決定cover範圍</strong></span><ol type="a" id="b0bb8d49-0af5-4e06-9ebc-c430d7f25122" class="numbered-list" start="1"><li>第一段主歌+副歌</li></ol></li></ol><ol type="1" id="6d09e2f9-03ee-4555-89f3-39ff894e03d6" class="numbered-list" start="2"><li><span style="border-bottom:0.05em solid"><strong>決定key</strong></span><ol type="a" id="a477ec9d-bf41-4225-b279-086c6f6e9a9c" class="numbered-list" start="1"><li>原key</li></ol></li></ol><ol type="1" id="7bcd2edd-8828-4a7f-8edf-2c2cb96c626c" class="numbered-list" start="3"><li><span style="border-bottom:0.05em solid"><strong>找出好按的capo數</strong></span><ol type="a" id="44499f63-c60e-406c-8082-a83af469ffd7" class="numbered-list" start="1"><li>capo - 4</li></ol></li></ol><p id="4374e907-3dee-4cd5-94ec-ed1c69f885ce" class=""><span style="border-bottom:0.05em solid">4.5.</span><span style="border-bottom:0.05em solid"><strong> 整理好歌詞，標記好漏拍/錯誤</strong></span><div class="indented"><p id="0492de25-ab22-4e8b-b77f-98dfe135bab4" class="">[Verse 1]
+喋る<strong>[Amaj7]</strong>のが好きアドリ<strong>[Am7]</strong>ブ得意
+けどオ<strong>[G#m7]</strong>ンエアー<mark class="highlight-red"><strong>[M0:16]</strong></mark>前はソ<strong>[C#m7]</strong>ワソワ
+カフの<strong>[Amaj7]</strong>Tバーとテンション<strong>[Am7]</strong>を上げて
+いざラ<strong>[G#m7]</strong>ジオウェーブ<strong>[G#7]</strong>に乗り<strong>[C#7]</strong> here we go</p><p id="a9d336ac-e4c8-4585-8cb3-02c4ba63ac7a" class=""><mark class="highlight-red"><strong>[0:27M][M][M]</strong></mark></p><p id="927f0304-6025-4212-89a7-7a3a0a1c4353" class="">[Pre-Chorus]
+<strong>[F#m7]</strong>今日も響く<strong>[Dmaj7]</strong>ハーブ・アルパート
+ブラス<strong>[B]</strong>はご<strong>[C#]</strong>機嫌<strong> [F#maj7]</strong>groovy, groovy (Yeah, yeah)
+<strong>[Amaj7]</strong>君の部屋<strong>[B7]</strong>までお届<strong>[C#sus4]</strong>け</p><p id="61752253-e743-49ae-b0ba-a0f6f78f762d" class=""><strong>[C#m] [D#7]</strong></p><p id="75ffc135-a7eb-4640-9f47-f7111970aa59" class="">[Chorus]
+All night<strong>[G#m7]</strong> radio 少<strong>[M0:45]</strong>しノイズある音<strong><mark class="highlight-red">[X]</mark></strong>色
+そ<strong>[D#7]</strong>れも味<strong>[C#]</strong>あっていい<strong>[G#m7]</strong>でしょ ま<strong>[Fdim]</strong>るでか<strong>[A#7]</strong>すかな<strong>[F#M7]</strong>潮騒<strong>[D#m7]</strong>
+<strong>[A#m7]</strong>All night<strong>[G#m7]</strong> radio 最高の仲<mark class="highlight-red"><strong>[M]</strong></mark>間いる放<strong>[F#m7]</strong>送局
+こ<strong>[A#dim]</strong>っから僕<strong>[D#7]</strong>の声今<strong>[BM7]</strong>夜も 闇<strong>[A#m7]</strong>に<strong>[BM7]</strong>花<strong>[C#sus4]</strong>咲<strong>[F#M7]</strong>かす</p><p id="2c5dd488-8f32-4edf-a9cb-61f840590182" class="">
+</p></div></p><ol type="1" id="1ff4209a-e53f-4be0-89c3-12c56b89427f" class="numbered-list" start="6"><li><span style="border-bottom:0.05em solid"><strong>找出漏拍&amp;錯誤的和弦+修正</strong></span><p id="5e292d95-0438-4e16-b592-612573da2a18" class="">[Verse 1]</p><p id="3e411312-6226-4d9e-8fe3-64533879e538" class="">喋る[<strong>Amaj7</strong>]のが好きアドリ[<strong>Am7</strong>]ブ得意
+けどオ[<strong>G#m7</strong>]ンエアー<span style="border-bottom:0.05em solid"><mark class="highlight-teal"><strong>[G#m7]</strong></mark></span>前はソ[<strong>C#m7</strong>]ワソワ
+カフの[<strong>Amaj7</strong>]Tバーとテンション[<strong>Am7</strong>]を上げて
+いざラ[<strong>G#m7</strong>]ジオウェーブ[<strong>G#7</strong>]に乗り[<strong>C#7</strong>] here we go</p><p id="8d625e81-e298-44d9-81be-a832c7ac22fb" class=""><span style="border-bottom:0.05em solid"><mark class="highlight-teal"><strong>[B][G#][AM7 ] </strong></mark></span></p><p id="0f72ce97-1aa4-4684-94a7-ea44cfc59193" class="">[<strong>Pre-Chorus</strong>]
+[<strong>F#m7</strong>]今日も響く[<strong>Dmaj7</strong>]ハーブ・アルパート
+ブラス[<strong>B</strong>]はご[<strong>C#</strong>]機嫌 [<strong>F#maj7</strong>]groovy, groovy (Yeah, yeah)
+[<strong>Amaj7</strong>]君の部屋[<strong>B7</strong>]までお届[<strong>C#sus4</strong>]け</p><p id="70a7adb7-dcea-42bc-b32f-f9295ea7a9db" class="">[<strong>C#m</strong>] [<strong>D#7</strong>]</p><p id="2036c3e7-9855-4503-ad4f-2c932bd721c3" class="">MODULATE &gt; F#</p><p id="88e011cd-d2d5-4503-a235-a26a8498724a" class="">[<strong>Chorus</strong>] 
+All night[<strong>G#m7</strong>] radio 少[<strong>M(C#)</strong>]しノイズある音<span style="border-bottom:0.05em solid"><mark class="highlight-teal">[</mark></span><span style="border-bottom:0.05em solid"><mark class="highlight-teal"><strong>X(F#m7)</strong></mark></span><span style="border-bottom:0.05em solid"><mark class="highlight-teal">]</mark></span>色
+そ[<strong>D#7</strong>]れも味[<strong>C#</strong>]あっていい[<strong>G#m7</strong>]でしょ ま[<strong>Fdim</strong>]るでか[<strong>A#7</strong>]すかな[<strong>F#M7</strong>]潮騒[<strong>D#m7</strong>]
+[<strong>A#m7</strong>]All night[<strong>G#m7</strong>] radio 最高の仲<span style="border-bottom:0.05em solid"><mark class="highlight-teal">[</mark></span><span style="border-bottom:0.05em solid"><mark class="highlight-teal"><strong>M(C#)</strong></mark></span><span style="border-bottom:0.05em solid"><mark class="highlight-teal">]</mark></span>間いる放[<strong>F#m7</strong>]送局
+こ[<strong>A#dim</strong>]っから僕[<strong>D#7</strong>]の声今[<strong>BM7</strong>]夜も 闇[<strong>A#m7</strong>][<strong>BM7</strong>]花[<strong>C#sus4</strong>]咲[<strong>F#M7</strong>]かす</p><ol type="1" id="85c5a0b6-dcc3-4eab-a041-283b45af3fda" class="numbered-list" start="7"><li><span style="border-bottom:0.05em solid"><strong>Inversion跟chord block diagram截圖下來</strong></span></li></ol><figure id="10124497-0713-41bf-a935-b44991c16ad9" class="image"><a href="j-pop%E5%BC%BE%E3%81%8D%E8%AA%9E%E3%82%8A%E6%87%B6%E4%BA%BA%E5%8C%85%20d190c2872d364037aba41d3710408d6a/Untitled.png"><img style="width:599px" src="j-pop%E5%BC%BE%E3%81%8D%E8%AA%9E%E3%82%8A%E6%87%B6%E4%BA%BA%E5%8C%85%20d190c2872d364037aba41d3710408d6a/Untitled.png"/></a></figure></li></ol><p id="12736841-1425-4dc3-a44c-3c9877410323" class="">
+</p><p id="c01f1314-89ba-4203-8bb2-91d28730c70a" class="">
+</p></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>
